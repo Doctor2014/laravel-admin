@@ -587,8 +587,16 @@ EOT;
          *
          * {count} is increment number of current sub form count.
          */
+
+        $index = 0;
+
+        if($this->value)
+        {
+            $index = max(array_keys($this->value));
+        }
+        
         $script = <<<EOT
-var index = 0;
+var index = {$index};
 $('#has-many-{$this->column}').on('click', '.add', function () {
 
     var tpl = $('template.{$this->column}-tpl');
